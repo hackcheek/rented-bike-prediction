@@ -1,6 +1,9 @@
 import pandas as pd
 
 from typing import Literal
+from typing import List
+from sklearn.model_selection import train_test_split
+from numpy import ndarray
 
 
 class Data(pd.DataFrame):
@@ -45,3 +48,18 @@ class Data(pd.DataFrame):
             # Drop innecesary columns for traning
             .drop(columns=droped_columns)
         )
+        
+    def train_test_split(self, test_size: float=0.20):
+        data = self.copy()
+        features = data.columns.drop('cnt')
+
+        mask = int(self.shape[0] * test_size)
+        data_train = data[:-mask]
+        data_test = data[-mask:]
+
+        X_train = data_train[features]
+        y_train = data_train['cnt']
+        X_test = data_test[features]
+        y_test = data_test['cnt']
+
+        return X_train, X_test, y_train, y_test
