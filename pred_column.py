@@ -22,7 +22,7 @@ def from_csv(csvfile: str):
     with open(csvfile, 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            yield float(row['pred'])
+            yield int(row['pred'])
 
 
 def to_csv(content: Iterable, output_file: str):
