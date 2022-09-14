@@ -42,7 +42,7 @@ def dump(predicts: ndarray, name: str) -> None:
 
 
 def default_linear():
-    linear = Regression().linear.predict()
+    linear = Regression(['temp', 'hr', 'season', 'cnt']).linear.predict()
     dump(linear, 'linear_regression')
 
 
@@ -59,4 +59,5 @@ def conf_matrix(y_test: Iterable, y_pred: Iterable, plot=True):
 
 
 if __name__ == '__main__':
-    main()
+    default_linear()
+    # main()
