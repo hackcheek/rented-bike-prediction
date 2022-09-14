@@ -30,6 +30,8 @@ class Plots:
             self.data.corr().abs(), 
             text_auto=True
         )
+        fig.write_image('plots/correlation.png')
+        fig.show()
         return fig
 
 

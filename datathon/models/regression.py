@@ -34,6 +34,7 @@ class Regression:
         """
         if not features == ...:
             self.data_train = Data().train.preprocessing()[features]
+            features.remove('cnt')
             self.data_test = Data().test.preprocessing()[features]
         else:
             self.data_train = Data().train.preprocessing()
